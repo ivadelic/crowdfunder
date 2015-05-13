@@ -4,42 +4,36 @@ class ProjectsController < ApplicationController
 		@project = Project.all
 	end
 
-	def new
-		@project = Project.new
-	end
+  def show
+    @project = Project.find(params[:id])
+  end
 
-	def create
-		
-		@project = Project.new
-		 	if @project.save
-  		redirect_to projects_url
-  	else
-  		render :new
-  	end
+  def new
+   @project = Project.create
+  end
 
-	end
+  def create
+    @project = Project.new(project_params)
 
-	def show
-		@project = Project.find(params[:id])
-	end
+    if @project.save
+      redirect_to projects_path, notice: "Project created successfully!"
+    else
+      render 'new', alert: "Something went wrong! Try again?"
+    end
+  end 
 
-
-	private
-	def project_params
-	
-		params.require(:project).permit(
-			:title, 
-			:description, 
-			:start_time, 
-			:end_time, 
-			:category, 
-			:tags,
-			:rewards_attributes [:id, :title, :backer_limit, :description, :amount, :destroy],
-			)
-
-	end
-
-
-
+private
+  def project_params
+    params.require(:project).permit(
+      :title,
+      :description,
+      :start_time,
+      :end_time,
+      :category,
+      :tags,
+      :goal_amount, 
+      rewards_attributes: [:id, :amount, :title, :description, :backer_limit, :_destroy]
+    )
+  end
 
 end
