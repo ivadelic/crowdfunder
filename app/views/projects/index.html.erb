@@ -1,7 +1,44 @@
 <h1>Crowdfunder</h1>
 <h2>All Projects</h2>
-<% @projects.each do |project| %>
-<h3><%= link_to(<%= project.title %>, <%= project_path(project) %>)</h3>
-<h4>Goal Amount: $<%= project.goal_amount%></h4>
-<p><%= project.description %></p><br/> 
+
+<h1><small><%= page_entries_info @projects %></small></h1>
+
+<%= form_tag projects_path, method: :get, authentication: false, id: "search-form" do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search" %> 
 <% end %> 
+
+<br/>
+
+<div id="projects">
+	<%= render @projects %> 	
+</div>
+
+
+<script type="text/javascript">
+	function display_search_results(){
+		if (this.readyState === 4){
+			console.log(this);
+			document.getElementById("projects").innerHTML = this.responseText; 
+		}
+	}
+
+	var form = document.getElementById("search-form");
+	form.addEventListener("submit", function(event){
+		event.preventDefault();
+		var searchValue = document.getElementById("search").value;
+		var xhr = new XMLHttpRequest();
+		xhr.onload = display_search_results;
+		xhr.open("GET", "/projects?search=" + searchValue);
+		xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+		xhr.send();
+	});
+
+	// $.ajax({
+	// 	url: 
+	// 	data: 
+	// 	dataType: 
+	// 	type:
+	// })
+</script>
+
