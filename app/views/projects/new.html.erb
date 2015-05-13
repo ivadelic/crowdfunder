@@ -1,0 +1,59 @@
+<h3> Add a new project </h3>
+
+<%= form_for @project do |f| %>
+  
+  <div class="field">
+    <%= f.label :title %> <br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %> <br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time %> <br />
+    <%= f.datetime_field :start_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_time %> <br />
+    <%= f.datetime_field :end_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %> <br />
+    <%= f.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tags %> <br />
+    <%= f.text_field :tags %>
+  </div>
+
+  <div class="field">
+    <%= f.label :goal_amount %> <br />
+    <%= f.number_field :goal_amount  %>
+  </div>
+
+  <h4> Rewards </h4>
+
+  <div id="create-rewards">
+    <%= f.fields_for :rewards do |rewards_form| %>
+      <%= render 'reward_fields', f: rewards_form  %>
+      <%# render partial: 'reward_fields', locals: {f: rewards_form}  %>
+    <% end %>
+  </div>
+  
+  <div class="links">
+    <%= link_to_add_association 'add reward', f, :rewards %>
+  </div>
+  
+  <br />
+
+  <div class ="submit-button">
+    <%= f.submit %>
+  </div>
+
+<% end %>
