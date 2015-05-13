@@ -2,7 +2,8 @@
 
 	Project.create(
 	title: Faker::Commerce.product_name,
-  description: Faker::Hacker.say_something_smart
+  description: Faker::Hacker.say_something_smart,
+
       )
 
 end

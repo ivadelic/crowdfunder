@@ -4,6 +4,21 @@ class ProjectsController < ApplicationController
 		@project = Project.all
 	end
 
+	def new
+		@project = Project.new
+	end
+
+	def create
+		
+		@project = Project.new
+		 	if @project.save
+  		redirect_to projects_url
+  	else
+  		render :new
+  	end
+
+	end
+
 	def show
 		@project = Project.find(params[:id])
 	end
@@ -18,7 +33,8 @@ class ProjectsController < ApplicationController
 			:start_time, 
 			:end_time, 
 			:category, 
-			:tags
+			:tags,
+			:rewards_attributes [:id, :title, :backer_limit, :description, :amount, :destroy],
 			)
 
 	end
