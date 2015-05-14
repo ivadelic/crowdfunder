@@ -1,5 +1,6 @@
 
 class ProjectsController < ApplicationController
+  skip_before_filter :require_login, only: [:index, :show]
 
   def index
       @projects = if params[:search]
