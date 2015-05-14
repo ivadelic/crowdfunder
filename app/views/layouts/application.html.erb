@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav id = "menu" >
+	<ul>
+		<li><%= link_to "All Projects", "/"%></li>
+		<li><%= link_to "Create Project", "/projects/new" %></li>
+		<li><%= link_to "Login", "" %></li>
+		<li><%= link_to "Sign-up", "" %></li>
+	</ul>
+</nav>
 
 <%= yield %>
 
