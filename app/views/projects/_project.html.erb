@@ -1,5 +1,6 @@
 <%= link_to "/projects/#{project.id}" do %> 
 	<strong><%= project.title %></strong>
 <% end %> 
+<p><%= project.user.first_name%> <%= project.user.last_name%></p>
 <h4>Goal Amount: $<%= project.goal_amount %></h4>
 <p><%= project.description %></p>

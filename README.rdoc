@@ -27,84 +27,32 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.3
 
-# Git recap
-- git checkout -b rewards (will create the branch and checkout at the same time)
-- git push origin :rewards (pushes nothing to the branch destination & delete)
-- to merge, go back to the master, pull from github, then git merge rewards
-- 
-# Semantic versioning
-- major release = 1st number, a whole different release, breaking things
-- minor release = 2nd number, when you add a functionality 
-- patch release = 3rd number, probably to fix things. won't break your app - no new added functionality
-- if there is no squiggly line or greater than sign, it means you can only use that version
-- ~> means only patch releases, unless there is no third number (in which case it will go up to minor releases)
-- if you want to make sure you're enforcing the right versions of your things, bundle upgrade!
+DONE
+As a Project Owner, I want to be able to create a new project with a title and a description
+As a Project Owner, I want to set a goal for my project
+As a Project Owner, I want the ability to set funding rewards with a description of what backers will receive for each reward
 
+NEED TO HAVE
+As a Backer, I want to see who the owner of a project is
+As a Backer, I want to be able to back a project at a certain reward
+As a Project Owner, I want to see the total amount of money raised as of right now
+As a Project Owner, I want to see how many people have funded my project at each reward level
 
-# Nested forms 
-- form_for specifically because we're working with an active record model
-- this is for the rewards for projects
-- we want to know how to accept one model as part of another:
- * project has_many :rewards
- * rewards belongs_to :projet
- * add a migration to add a project id to rewards model
- * add accepts_nested_attribute_for :rewards in the project modleee
- * f.fields_for can be added to your new product form to accept these (:rewards do |rewards_form|)
- * the rest of the form is the same as a form_for
- * make sure you include rewards attributes in your project params in []
+WANT TO HAVE
+should be able to click on a reward and have it submitted with no page refresh
+once submitted, upon success, the amount raised should update
+As a Project Owner, I want to see how many days are left before my project is done
+As a Backer, When viewing a project, it should be very clear whether I have backed the project or not
+As a Backer, I want to see all of the projects that I have backed
+As a Backer, I want to see the total amount of money I have spent on projects
+As a Project Owner, To help people find my project, I want the ability to add it to a category
+As a Project Owner, To help people find my project, I want the ability to add various tags to my project
+As a Backer, I want to be able to see all projects in a particular category (use infinite scrolling)
+As a Backer, I want the ability to see all the projects associated with a particular tag (use infinite scrolling)
 
-# Cocoon
-- to add the ability for the user to dynamically add and remove new rewards, use cocoon!
- * gem 'cocoon' in your gemfile
- * //= require cocoon in your application.js file after jquery
- * add more fields to strong params in the projects controller :id and :_destroy
- * add to fields_for: wrap in rewards div, move fields into a partial, call it _rewards_fields and reference it - important for this to be a partial so we can keep adding them
- * add div class 'links' and put link_to_add_association after form_fields
- * add link_to_remove_association to form partial
-
-# Choosing good Ruby gems
-- look for gems that are well maintained & established
-- something in beta is probably not a good idea to test out
-- rubygems.org is where you can find all of them gems!
-- ruby toolbox can help you review your options
-- check out the total downloads and hover your cursor over it to see what the current rate of DLs is
-- activity is good to keep in mind to see if people are working on this gem, as well as commits
-
-# Sorcery
-- authentication gem: reset password, activity logging, external authentication
-- add gem to project, bundle install
-- rails g sorcery:install
-- add_index :users, :email, unique: true in your migration file
-- add_index on foreign keys
-- use add_index sparingly and only where you need to use them
-- sorcery adds authenticates_with_sorcery! to your user model - you can only have one!
-- add validations to your user model:
-  * validates password_confirmation
-  * validates 
-  * validates
-  * validates email :unique
-- there's a sorcery file in config/initializers where you can set some default functionalities that would be worth looking through
-- create a sessions controller - docs will walk you through how to set these up for sorcery
-- 'login' is a new method created for us by sorcery that will check if the email exists and matches the email/password confirmation
-- :redirect_back_or_to(:projects, notice: 'Login successful') brings you back to where you were before you logged in
-- sorcery gives you current_user, so no need to define that!
-- you can :require_login because sorcery gives that to you too!
-- require_login is a method that calls a function called not_authenticated. you can define this to do our own custom function - you should do this to redirect to new projects and deliver a message telling the user they are logged in
-- to log your user in as soon as they are created:
- * 
-
-
-# What if we have different types of uses?
-- Set up roles
-- if you want to add admins, you could add an admin column and put true or false in as a value
-
-- RailsCasts: ruby on rails screencasts! Check them out
-
-Cancancan
-- Another auth gem
-- Good for building more complex apps later, esp those with mny user types
-- 
-
+DREAMZ
+As a Backer, I want to be able to leave comments on a project (The comment should be submitted via AJAX)
+As a Backer, I want to be notified when any projects I am backing meet their goal and are fully funded
 
 
 

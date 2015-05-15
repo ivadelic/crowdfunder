@@ -1,7 +1,9 @@
 <%= link_to 'Back to Projects', projects_path %>
 
 <h1><%= @project.title %></h1>
-<h2>Project Goal Amount: $<%= @project.goal_amount%></h2>
+<h2>$<%= @project.goal_amount%></h2>
+<p><%= @project.user.first_name%> <%= @project.user.last_name%></p>
+
 <p><%= @project.description %></p>
 <p><%= @project.start_time %></p>
 <p><%= @project.end_time %></p>
