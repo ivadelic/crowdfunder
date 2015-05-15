@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   def index
       @projects = if params[:search]
       Project.where("LOWER(title) LIKE LOWER(?)", "%#{params[:search]}%")
-    else 
+    else
       Project.all
     end
 
@@ -33,16 +33,16 @@ class ProjectsController < ApplicationController
     else
       render 'new', alert: "Something went wrong! Try again?"
     end
-  end 
-  private 
+  end
+  private
   def project_params
     params.require(:project).permit(
       :title,
-      :description, 
-      :start_time, 
-      :end_time, 
-      :category, 
-      :tags, 
+      :description,
+      :start_time,
+      :end_time,
+      :category,
+      :tags,
       :rewards_attributes [:id, :title, :backer_limit, :description, :amount, :destroy]
       )
   end
