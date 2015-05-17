@@ -1,6 +1,7 @@
-<%= link_to "/projects/#{project.id}" do %> 
-	<strong><%= project.title %></strong>
-<% end %> 
+<%= link_to "/projects/#{project.id}" do %>
+	<strong><%= project.title %></strong><br/>
+<button type="button">Pledge to this Project!</button>
+<% end %>
 <p><%= project.user.first_name%> <%= project.user.last_name%></p>
 <h4>Goal Amount: $<%= project.goal_amount %></h4>
 <p><%= project.description %></p>

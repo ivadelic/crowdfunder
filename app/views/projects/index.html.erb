@@ -5,13 +5,13 @@
 
 <%= form_tag projects_path, method: :get, authentication: false, id: "search-form" do %>
 	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search" %> 
-<% end %> 
+	<%= submit_tag "Search" %>
+<% end %>
 
 <br/>
 
 <div id="projects">
-	<%= render @projects %> 	
+	<%= render @projects %>
 </div>
 
 <%= paginate @projects %>
@@ -20,7 +20,7 @@
 	function display_search_results(){
 		if (this.readyState === 4){
 			console.log(this);
-			document.getElementById("projects").innerHTML = this.responseText; 
+			document.getElementById("projects").innerHTML = this.responseText;
 		}
 	}
 
@@ -36,9 +36,9 @@
 	});
 
 	// $.ajax({
-	// 	url: 
-	// 	data: 
-	// 	dataType: 
+	// 	url:
+	// 	data:
+	// 	dataType:
 	// 	type:
 	// })
 </script>
