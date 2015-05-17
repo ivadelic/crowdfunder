@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 
 
   def new
-   @project = Project.create
+   @project = Project.new
   end
 
   def show
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-
+    @project.user = current_user
     if @project.save
       redirect_to projects_path, notice: "Project created successfully!"
     else
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
       :end_time,
       :category,
       :tags,
-      :rewards_attributes [:id, :title, :backer_limit, :description, :amount, :destroy]
+      :rewards_attributes => [:id, :title, :backer_limit, :description, :amount, :destroy]
       )
   end
 end
