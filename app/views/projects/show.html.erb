@@ -3,10 +3,10 @@
   <h1><%= @project.title %></h1>
   <h2>$<%= @project.goal_amount%></h2>
   <p>Owner: <%= @project.user.first_name%> <%= @project.user.last_name%></p>
-  <h3><%= distance_of_time_in_words_to_now(@project.end_time) %> days to go!</h3>
+  <h3>There are <%= distance_of_time_in_words_to_now(@project.end_time) %> to go before you can pledge no more!</h3>
   <p><%= @project.description %></p>
-  <p><%= @project.start_time %></p>
-  <p><%= @project.end_time %></p>
+<!--   <p><%= @project.start_time%></p>
+  <p><%= @project.end_time %></p> -->
   <p><%= @project.category %></p>
   <p><%= @project.tags %></p>
   <p><%= @project.created_at %></p>
