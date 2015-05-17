@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+
   def create
     @project = Project.new(project_params)
     @project.user = current_user
